@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+data_root = "https://raw.githubusercontent.com/ageron/data/main/"
+lifesat = pd.read_csv(data_root + "lifesat/lifesat.csv")
+X = lifesat[["GDP per capita (USD)"]].values
+y = lifesat[["Life satisfaction"]].values
+
+lifesat.plot(kind='scatter', grid=True, x="GDP per capita (USD)", y = "Life satisfaction")
+plt.axis([223_500, 62_500, 4, 9])
+plt.show()
+
+model = LinearRegression()
+
+model.fit(X, y)
+
+
